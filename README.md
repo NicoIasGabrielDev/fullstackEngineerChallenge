@@ -11,6 +11,22 @@ Calculating environmental indicators by upload of spreadsheets
 - Code editor that runs node.js like VS Code
 - Docker
 
+## Running with Docker (recommended)
+
+```bash
+
+### At the project root, build and run everything:
+docker-compose up --build
+```
+
+#### Access the app:
+
+- Frontend: [http://localhost:5173](http://localhost:5173)
+- Backend: [http://localhost:3000](http://localhost:3000)
+- Swagger Docs: [http://localhost:3000/api-docs](http://localhost:3000/api-docs)
+---
+
+## Or the convetional way
 ### Installation Backend
 
 ```bash
@@ -22,52 +38,25 @@ cd backend
 
 # Install dependencies
 npm install
-```
 
-### Run the server
-
-```bash
+# Run the server
 npx nodemon index.js
----
-
+```
 > The server will be running at `http://localhost:3000`
 ---
 
-## 📘 Swagger Documentation
-Access the full documentation with live testing via:
+## Swagger Documentation
+### Access the full documentation with live testing via: http://localhost:3000/api-docs
 ---
-http://localhost:3000/api-docs
----
-
 
 ### Installation Frontend
-
 ```bash
 # Navigate to the frontend folder
 cd frontend
 
 # Install dependencies
 npm install
-```
 
-### Run the server
-
-```bash
+# Run the server
 npm run dev
----
-
-
-### Run with Docker (Recommended)
-
-### At the project root, build and run everything:
-
-```bash
-docker-compose up --build
 ```
-
-#### Access the app:
-
-- Frontend: [http://localhost:5173](http://localhost:5173)
-- Backend: [http://localhost:3000](http://localhost:3000)
-- Swagger Docs: [http://localhost:3000/api-docs](http://localhost:3000/api-docs)
----
