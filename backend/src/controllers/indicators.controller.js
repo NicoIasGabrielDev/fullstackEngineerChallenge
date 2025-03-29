@@ -21,34 +21,53 @@ function getLatestUploadedFile() {
 function getTotalEmissionPerYear(req, res){
   try {
     let indicators = loadIndicatorsOrFail(res);
-    return res.json({ data: indicators.totalEmissionPerYear });
+    const formatted = Object.entries(indicators.totalEmissionPerYear).map(
+      ([year, emission]) => ({
+        year: year,
+        emission: Number(emission.toFixed(2))
+      })
+    );
+    return res.json(formatted);
   } catch (error) {
     return res.status(500).json({ error: "Internal error, please try again later!" });
   }
 };
 
 function getTop5Companies(req, res){
-    try {
-      let indicators = loadIndicatorsOrFail(res);
-      return res.json({ data: indicators.top5EmissionCompanies });
-    } catch (error) {
-      return res.status(500).json({ error: "Internal error, please try again later!" });
-    }
-  };
-
-function getAverageConsumeByCompany(req, res){
   try {
     let indicators = loadIndicatorsOrFail(res);
-    return res.json({ data: indicators.averageConsumeByCompany });
+    return res.json(indicators.top5EmissionCompanies);
   } catch (error) {
     return res.status(500).json({ error: "Internal error, please try again later!" });
   }
 };
 
+function getAverageConsumeByCompany(req, res) {
+  try {
+    let indicators = loadIndicatorsOrFail(res);
+
+    const formatted = Object.entries(indicators.averageConsumeByCompany).map(
+      ([company, consume]) => ({
+        company: company,
+        consume: Number(consume.toFixed(2))
+      })
+    );
+    return res.json(formatted);
+  } catch (error) {
+    return res.status(500).json({ error: "Internal error, please try again later!" });
+  }
+}
+
 function getTotalSectorConsume(req, res){
   try {
     let indicators = loadIndicatorsOrFail(res);
-    return res.json({ data: indicators.sectorConsume });
+    const formatted = Object.entries(indicators.sectorConsume).map(
+      ([sector, consume]) => ({
+        sector,
+        consume: consume.toFixed(2)
+      })
+    );
+    return res.json(formatted);
   } catch (error) {
     return res.status(500).json({ error: "Intern error, please try again later!" });
   }
@@ -61,7 +80,6 @@ function loadIndicatorsOrFail(res) {
     }
 
     if(cacheIndicators && cacheFileName === filePath){
-        console.log('file:', cacheFileName)
         return cacheIndicators
     }
 

@@ -52,7 +52,7 @@ function processExcel(filePath){
         averageConsume[company]  = average;
     }
 
-    const top5EmissionCompanies = Object.entries(emissionByCompany).sort((a,b) => b[1] - a[1]).slice(0,5).map(([company,c02Emission]) => ({company,c02Emission}))
+    const top5EmissionCompanies = Object.entries(emissionByCompany).sort((a,b) => b[1] - a[1]).slice(0,5).map(([company,c02Emission]) => ({company,c02Emission: Number(c02Emission.toFixed(2)) }))
     
     return({
         totalEmissionPerYear,
