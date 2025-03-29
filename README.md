@@ -9,6 +9,7 @@ Calculating environmental indicators by upload of spreadsheets
 - Node.js
 - npm or yarn
 - Code editor that runs node.js like VS Code
+- Docker
 
 ### Installation Backend
 
@@ -53,4 +54,20 @@ npm install
 
 ```bash
 npm run dev
+---
+
+
+### Run with Docker (Recommended)
+
+### At the project root, build and run everything:
+
+```bash
+docker-compose up --build
+```
+
+#### Access the app:
+
+- Frontend: [http://localhost:5173](http://localhost:5173)
+- Backend: [http://localhost:3000](http://localhost:3000)
+- Swagger Docs: [http://localhost:3000/api-docs](http://localhost:3000/api-docs)
 ---
